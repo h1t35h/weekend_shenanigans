@@ -1,0 +1,6 @@
+
+CLASS_IN = 1
+
+TYPE_A = 1
+TYPE_NS = 2
+TYPE_TXT = 16
