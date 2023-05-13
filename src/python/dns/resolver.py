@@ -20,6 +20,8 @@ def get_answer(packet):
     for x in packet.answers:
         if x.type_ == TYPE_A:
             return x.data
+        elif x.type_ == TYPE_CNAME:
+            return x.data
 
 def get_nameserver_ip(packet):
     for x in packet.additionals:
@@ -44,11 +46,11 @@ def resolve(domain_name, record_type):
         elif ns_domain := get_nameserver(response):
             nameserver = resolve(ns_domain, TYPE_A)
         else:
-            raise Exception("Something went wrong..")
+            raise Exception(f"Something went wrong with response :{response}")
 
 
 def main():
-    resolve("twitter.com", TYPE_A)
+    resolve("www.facebook.com", TYPE_A)
 
 
 if __name__ == "__main__":
